@@ -1,3 +1,7 @@
+_why cpp? what is so good about this?_
+
+_this is my journey of learning the language half of the developers are so fond of!_
+
 OOP language (abstraction, encap, inheritance, poly)
 Not pure OOPs (why? We need not write it in OOP form always, and can write it in functional form)
 Extension to C
