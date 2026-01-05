@@ -58,3 +58,62 @@ int add(int (*)()) these two functions are similar.
 int add(int x)
 int add(int p = 10) these two functions are similar because default arguments are not considered in function overloading.
 */
+
+/*const keyword in function overloading in cpp
+
+points:
+1. c++ allows to overload member functions on the basis of const and non-const.
+2. const parameters allows to overload member functions and normal function but it should be reference/pointer
+*/
+
+
+#include <iostream>
+using namespace std;
+
+class Test{
+    int x;
+
+    public:
+    Test(int x = 0) : x(x) {}
+
+    void print(int val){
+        cout << val << endl;
+    }
+
+    void print(const int val){
+        cout << val << endl;
+    }
+};
+
+int main(){
+    Test t;
+    int k = 10;
+    const int p = 20;
+    t.print(k); // this will call the first function
+    t.print(p); // this will also call the first function because const doesn't make any difference in function overloading
+
+    return 0;
+}
+
+//how to fix the problem of const in function overloading
+//void print(int & val)
+//void print(const int & val)
+
+//or
+//void print(int * val){cout << *val << endl;}
+//void print(const int* val){cout << *val << endl;}
+// in main func: t.print(&k); t.print(&p);
+
+//talking about the 1st point
+// overloading works if we have member functions where one is const and another is non-const
+/*example
+
+void print() {cout << "non-const" << endl;}
+void print() const {cout << "const" << endl;}
+in main-> Test t1;
+const Test t2;
+t1.print();
+t2.print();
+
+now the above representation will print respective outputs.
+*/
