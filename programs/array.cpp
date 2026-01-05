@@ -3,6 +3,33 @@
 #include <iostream>
 using namespace std;
 
+//passing 1d array to function
+void func(int arr[], int size){
+    for(int i=0; i<size; i++){
+        cout << arr[i] << endl;
+    }
+}
+
+//passing 2d array to function
+//1st way
+const int c = 3; //number of columns must be known
+void func2d(int arr[][c], int r){
+    for(int i=0; i<r; i++){
+        for(int j=0; j<c; j++){
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+//2nd way
+const int r = 3; //number of rows must be known
+const int c = 3; //number of columns must be known
+//void func2d_alt(int arr[r][c])
+
+//3rd way using pointer
+//void func2d_ptr(int *arr, int rows, int cols){
+
 int main(){
 
     //1D array
@@ -44,5 +71,11 @@ int main(){
         cout << arr1d[i] << " ";
     }
     cout << endl;
+
+    //calling function with array
+    int size_arr1 = sizeof(arr1d)/sizeof(arr1d[0]);
+    func(arr1d, size_arr1);
+
+    //func2d_ptr((int*)arr2d, 3, 3);
     return 0;
 }
