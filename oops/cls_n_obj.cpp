@@ -13,10 +13,15 @@ class Teacher {
         // to access private members we need to create public methods called getters and setters
     public: 
 
-        // Teacher(){  // this is a constructor and its a non-parameterized constructor
-        //     cout << "Constructor called!" << endl;
-        //     department = "computer science"; // default department
-        // }
+        //properties/attributes
+        string name;
+        int age;
+        string department;
+
+        Teacher(){  // this is a constructor and its a non-parameterized constructor
+            cout << "Constructor called!" << endl;
+            department = "computer science"; // default department
+        }
 
         //parameterized constructor
         Teacher(string n, string a, string d, double sal){
@@ -25,10 +30,24 @@ class Teacher {
             department = d;
             salary = sal;
         }
-        //properties/attributes
-        string name;
-        int age;
-        string department;
+
+        //copy constructor
+        Teacher(Teacher &orgobj){//call by reference
+            cout << "i am copy constructor...\n";
+            this->name = orgobj.name;
+            this->age = orgobj.age;
+            this->department = orgobj.department;
+            this->salary = orgobj.salary;
+        }
+
+        //lets study about this pointer
+        Teacher(string name){
+            this->name = name; // here left name is object's attribute and right name is parameter
+                        // but both are same so compiler gets confused
+                        // to avoid this confusion we use 'this' pointer
+                        //this->name is same as writing (*this).name
+        }
+
 
         //methods / member functions
         void changeDepartment(string newDept){
@@ -88,7 +107,10 @@ int main() {
 
     // cout << t1.name << endl;
     // cout << t1.department << endl;
-    cout << t1.getSalary() << endl; // getting salary using getter method
-    t1.getInfo();
+    Teacher t2(t1); // copy constructor called
+    //we can also create a custom copy constructor and call it the same way
+    
+    cout << t2.getSalary() << endl; // getting salary using getter method
+    t2.getInfo();
     return 0;
 }
